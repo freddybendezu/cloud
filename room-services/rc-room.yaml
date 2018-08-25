@@ -2,8 +2,6 @@ kind: ReplicationController
 apiVersion: v1
 metadata:
   name: app1
-  labels:
-    app: room1
 spec:
   replicas: 1 #We always want more than 1 replica for HA
   selector:
