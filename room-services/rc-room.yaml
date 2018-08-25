@@ -1,18 +1,21 @@
-apiVersion: v1
 kind: ReplicationController
+apiVersion: v1
 metadata:
- name: app1
+  name: app1
+  labels:
+    app: room1
 spec:
- replicas: 1
- selector:
-    app: room
- template:
+  replicas: 1 #We always want more than 1 replica for HA
+  selector:
+    matchLabels:
+      app: room
+  template:
     metadata:
-        labels:
-            app: room
+      labels:
+        app: room
     spec:
-        containers:
-        - name: app1
-          image: room-services
-          ports:
-          - containerPort: 8101
+      containers:
+      - name: app1 #1st container
+        image: room-services #Dockerhub image
+        ports:
+        - containerPort: 8101 #Exposes the port 8101 of the container
