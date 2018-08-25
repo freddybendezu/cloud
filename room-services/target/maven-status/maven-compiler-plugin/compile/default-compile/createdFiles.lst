@@ -1,0 +1,4 @@
+com\frankmoley\services\room\RoomController.class
+com\frankmoley\services\room\RoomRepository.class
+com\frankmoley\services\room\Room.class
+com\frankmoley\services\room\RoomServicesApplication.class
