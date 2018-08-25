@@ -12,7 +12,7 @@ spec:
             app: room
     spec:
         containers:
-            - name: app1
+            -name: app1
             image: room-services
             ports:
-            - containerPort: 8101
+            -containerPort: 8101
