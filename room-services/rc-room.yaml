@@ -7,7 +7,6 @@ metadata:
 spec:
   replicas: 1 #We always want more than 1 replica for HA
   selector:
-    matchLabels:
       app: room
   template:
     metadata:
