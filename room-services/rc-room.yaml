@@ -1,18 +1,28 @@
-kind: ReplicationController
-apiVersion: v1
+apiVersion: room-services/version1
+kind: Deployment
 metadata:
-  name: app1
+  name: room-services
 spec:
-  replicas: 1 #We always want more than 1 replica for HA
-  selector:
-      app: room
+  replicas: 1
   template:
     metadata:
       labels:
-        app: room
+        app: room-services
     spec:
       containers:
-      - name: app1 #1st container
-        image: room-services #Dockerhub image
+      - name: room-services
+        image: miregistro.azurecr.io/nuevosproyectos/hotel/room-services:version1
         ports:
-        - containerPort: 8101 #Exposes the port 8101 of the container
+        - containerPort: 8101
+          name: room-services
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: room-services
+spec:
+  ports:
+  - port: 8101
+  selector:
+    app: room-services
+---
