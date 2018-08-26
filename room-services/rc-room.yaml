@@ -1,4 +1,4 @@
-apiVersion: room-services/version1
+apiVersion: miregistro.azurecr.io/nuevosproyectos/hotel/room-services/version1
 kind: Deployment
 metadata:
   name: room-services
