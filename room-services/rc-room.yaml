@@ -1,4 +1,4 @@
-apiVersion: freddybendezu/demo01:ver1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: azure-vote-front1
