@@ -18,7 +18,7 @@ spec:
       - name: azure-vote-front1
         image: freddybendezu/demo01:ver1
         ports:
-        - containerPort: 80
+        - containerPort: 8761
         resources:
           requests:
             cpu: 250m
