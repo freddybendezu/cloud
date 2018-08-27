@@ -1,28 +1,40 @@
-apiVersion: freddybendezu/demo01:ver1
+apiVersion: freddybendezu/demo01
 kind: Deployment
 metadata:
-  name: aplicacion1
+  name: azure-vote-front1
 spec:
   replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
   template:
     metadata:
       labels:
-        app: aplicacion1
+        app: azure-vote-front1
     spec:
       containers:
-      - name: room-services
-        image: demo01
+      - name: azure-vote-front1
+        image: freddybendezu/demo01:ver1
         ports:
-        - containerPort: 8101
-          name: aplicacion1
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+        env:
+        - name: REDIS1
+          value: "azure-vote-back1"
 ---
-apiVersion: ver1
+apiVersion: v1
 kind: Service
 metadata:
-  name: aplicacion1
+  name: azure-vote-front1
 spec:
+  type: LoadBalancer
   ports:
-  - port: 8101
+  - port: 80
   selector:
-    app: aplicacion1
----
+    app: azure-vote-front1
