@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: azure-vote-front3
+  name: azure-vote-front2
 spec:
   replicas: 1
   strategy:
@@ -12,11 +12,11 @@ spec:
   template:
     metadata:
       labels:
-        app: azure-vote-front3
+        app: azure-vote-front2
     spec:
       containers:
-      - name: azure-vote-front3
-        image: freddybendezu/demo03:ver3
+      - name: azure-vote-front2
+        image: freddybendezu/demo02:ver1
         ports:
         - containerPort: 8080
         resources:
@@ -26,15 +26,15 @@ spec:
             cpu: 500m
         env:
         - name: REDIS1
-          value: "azure-vote-back3"
+          value: "azure-vote-back2"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-front3
+  name: azure-vote-front2
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: azure-vote-front3
+    app: azure-vote-front2
