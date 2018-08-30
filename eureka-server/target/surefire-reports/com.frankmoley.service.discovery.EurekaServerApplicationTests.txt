@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.frankmoley.service.discovery.EurekaServerApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.322 sec - in com.frankmoley.service.discovery.EurekaServerApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.346 sec - in com.frankmoley.service.discovery.EurekaServerApplicationTests
