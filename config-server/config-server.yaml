@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: config-server
+spec:
+ selector:
+  matchLabels:
+   app: config-server
+ strategy:
+  rollingUpdate:
+   maxSurge: 1
+   maxUnavailable: 1
+  type: RollingUpdate
+ template:
+  metadata:
+   labels:
+    app: config-server
+  spec:
+   containers:
+    - name: config-server
+      image: freddybendezu/config-server
+      ports:
+      - containerPort: 8080
+---
