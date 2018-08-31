@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: eurekaserver
+spec:
+ selector:
+  matchLabels:
+   app: eurekaserver
+ strategy:
+  rollingUpdate:
+   maxSurge: 1
+   maxUnavailable: 1
+  type: RollingUpdate
+ template:
+  metadata:
+   labels:
+    app: eurekaserver
+  spec:
+   containers:
+    - name: eurekaserver
+      image: freddybendezu/eurekaserver
+      ports:
+      - containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+ name: eurekaserver
+spec:
+ selector:
+  app: eurekaserver
+ ports:
+  - protocol: TCP
+    port: 80
+  type: loadBalancer
